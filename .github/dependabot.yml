@@ -1,0 +1,13 @@
+# Sans ce fichier, les alertes Dependabot s'accumulent sans jamais ouvrir de PR.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Un seul PR par lot : requirements.txt ne contient que 4 lignes,
+      # les separer ne ferait que multiplier les rebases.
+      python-deps:
+        patterns: ["*"]
